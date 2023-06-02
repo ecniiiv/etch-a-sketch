@@ -35,9 +35,24 @@ main button {
   display: grid;
   width: 50%;
   height: 550px;
+  padding: 5px;
+
+  position: relative;
+}
+
+#drawing-board::before {
+  content: "";
+  width: 101.5%;
+  height: 101%;
   border: 1px solid #ccc;
+
+  position: absolute;
+  z-index: -1;
 }
 
 .block:hover {
   background: #000;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

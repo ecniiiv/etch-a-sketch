@@ -37,11 +37,15 @@ function renderGrid(gridCount) {
       drawMode = true;
     });
 
-    window.addEventListener("mouseup", () => {
+    window.addEventListener("mouseup", (e) => {
       drawMode = false;
     });
 
-    div.addEventListener("mouseover", () => {
+    div.addEventListener("click", (e) => {
+      div.style.backgroundColor = "#000";
+    });
+
+    div.addEventListener("mouseover", (e) => {
       if (drawMode) {
         div.style.backgroundColor = "#000";
       }
