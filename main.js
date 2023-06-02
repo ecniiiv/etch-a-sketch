@@ -1,15 +1,14 @@
 const drawingBoard = document.querySelector("#drawing-board");
-const askGridBtn = document.querySelector("#ask-grid-btn");
+const gridBtn = document.querySelectorAll(".grid-btn");
 
-let grid = 0;
-askGridBtn.addEventListener("click", () => {
-  grid = prompt("Set the the Grid (Min: 16, Max: 64)");
-  if (grid <= 15 || grid > 100) {
-    alert("Allowed grid is between 16 - 100");
-    grid = 0;
-  } else {
+let grid = 16;
+renderGrid(grid);
+
+gridBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    grid = Number(btn.dataset.value);
     renderGrid(grid);
-  }
+  });
 });
 
 function renderGrid(gridCount) {
@@ -22,6 +21,7 @@ function renderGrid(gridCount) {
 
   let gridOffset = drawingBoard.offsetWidth / grid;
 
+  // RENDER GRID
   for (let i = 0; i < gridCount * gridCount; i++) {
     const div = document.createElement("div");
     div.setAttribute(
@@ -30,9 +30,25 @@ function renderGrid(gridCount) {
     );
     div.classList.add("block");
     drawingBoard.appendChild(div);
+
+    // DRAW
+    let drawMode = false;
+    window.addEventListener("mousedown", (e) => {
+      drawMode = true;
+    });
+
+    window.addEventListener("mouseup", () => {
+      drawMode = false;
+    });
+
+    div.addEventListener("mouseover", () => {
+      if (drawMode) {
+        div.style.backgroundColor = "#000";
+      }
+    });
   }
 }
-
+// CLEAR GRID
 function clearGrid() {
   drawingBoard.innerHTML = "";
 }

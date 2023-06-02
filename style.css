@@ -1,13 +1,40 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+main button {
+  height: 3em;
+  width: 10em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+
+  width: 80%;
+  height: 500px;
+  padding: 5em 0;
 }
 
 #drawing-board {
   display: grid;
-  transform: scale(0.5);
-}
-
-.block {
+  width: 50%;
+  height: 550px;
   border: 1px solid #ccc;
 }
 
