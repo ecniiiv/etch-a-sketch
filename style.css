@@ -3,10 +3,14 @@
 }
 
 #drawing-board {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  transform: scale(0.5);
 }
 
 .block {
   border: 1px solid #ccc;
+}
+
+.block:hover {
+  background: #000;
 }
