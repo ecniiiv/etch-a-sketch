@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+#drawing-board {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block {
+  border: 1px solid #ccc;
+}
