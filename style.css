@@ -11,21 +11,24 @@ html {
 }
 
 body {
-  background: #ccc;
+  background: #333;
 }
 
 button {
   border: 1px solid #ccc;
   background: #ececec;
-  border-radius: 50%;
   cursor: pointer;
-
   width: 4em;
   height: 4em;
 }
 
+.static button {
+  border-radius: 50%;
+}
+
 .grid-picker button,
-.color-picker .add-color {
+.color-picker .add-color,
+.color-picker .remove-color {
   border-radius: 8px;
   font-weight: 700;
   letter-spacing: 0.1rem;
@@ -33,7 +36,11 @@ button {
 }
 
 .color-picker .add-color {
-  width: 100%;
+  width: 10em;
+  height: 2em;
+}
+
+.color-picker .remove-color {
   height: 2em;
 }
 
@@ -44,6 +51,15 @@ button {
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+
+.active-color,
+.side-panel,
+.wheel,
+.static {
+  border: 1px solid #ccc;
+  padding: 0.3em 1em;
+  border-radius: 8px;
 }
 
 .side-panel {
@@ -61,7 +77,8 @@ button {
   gap: 0.5em;
 }
 
-.color-picker .wheel {
+.color-picker .wheel,
+.active-color {
   display: flex;
   align-items: center;
   gap: 1em;
@@ -75,6 +92,17 @@ button {
 .color-picker .static {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.active-color div {
+  flex-basis: 100%;
+  height: 2.5em;
+  border: 1px solid #ccc;
+  background: black;
+}
+
+.active-color h1 {
+  color: #ccc;
 }
 
 /* BOARD */

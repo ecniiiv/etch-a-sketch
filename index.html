@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
+    <script
+      src="https://kit.fontawesome.com/dc7c1ee380.js"
+      crossorigin="anonymous"
+    ></script>
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -18,16 +22,23 @@
           <button data-grid="64">64x64</button>
         </div>
         <div class="color-picker">
+          <div class="active-color">
+            <h1>Active Color</h1>
+            <div></div>
+          </div>
           <div class="wheel">
             <input type="color" />
             <button class="add-color">Add to pallete</button>
+            <button class="remove-color">
+              <img src="./assets/trash.svg" alt="delete color" />
+            </button>
           </div>
           <div class="static">
-            <button class="saved-color" data-color="black"></button>
-            <button class="saved-color" data-color="red"></button>
-            <button class="saved-color" data-color="blue"></button>
-            <button class="saved-color" data-color="green"></button>
-            <button class="saved-color" data-color="yellow"></button>
+            <button class="saved-color" data-color="#000000"></button>
+            <button class="saved-color" data-color="#ff0000"></button>
+            <button class="saved-color" data-color="#0000ff"></button>
+            <button class="saved-color" data-color="#008000"></button>
+            <button class="saved-color" data-color="#ffff00"></button>
           </div>
         </div>
       </section>
