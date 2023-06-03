@@ -1,6 +1,7 @@
 const drawingBoard = document.querySelector(".drawing-board");
 const savedColorBtn = document.querySelectorAll(".saved-color");
 // test
+// test
 // buttons
 const colorPallete = document.querySelectorAll('input[type="color"]');
 const gridPickerBtn = document.querySelectorAll(".grid-picker button");
