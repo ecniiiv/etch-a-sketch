@@ -29,9 +29,9 @@ savedColorBtn.forEach((btn) => {
 
 // FUNCTIONS
 
-function getGridSize(button) {
-  return button.dataset.grid;
-}
+const getGridSize = (button) => button.dataset.grid;
+const setColor = (controller) => controller.dataset.color;
+const clearCanvas = (canvas) => (canvas.innerHTML = "");
 
 function setCanvas() {
   clearCanvas(drawingBoard);
@@ -55,28 +55,16 @@ function renderGridCanvas(container, count) {
   }
 }
 
-function setColor(controller) {
-  return controller.dataset.color;
-}
-
 let drawMode = false;
 function draw(target) {
-  window.addEventListener("mousedown", () => {
-    drawMode = true;
-  });
-  window.addEventListener("mouseup", () => {
-    drawMode = false;
-  });
-  target.addEventListener("click", () => {
-    target.setAttribute("style", `background-color: ${chosenColor}`);
-  });
+  window.addEventListener("mousedown", () => (drawMode = true));
+  window.addEventListener("mouseup", () => (drawMode = false));
+  target.addEventListener("click", () =>
+    target.setAttribute("style", `background-color: ${chosenColor}`)
+  );
   target.addEventListener("mouseover", () => {
     if (drawMode === true) {
       target.setAttribute("style", `background-color: ${chosenColor}`);
     }
   });
-}
-
-function clearCanvas(canvas) {
-  canvas.innerHTML = "";
 }
