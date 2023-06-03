@@ -1,71 +1,89 @@
 const drawingBoard = document.querySelector(".drawing-board");
-const savedColorBtn = document.querySelectorAll(".saved-color");
-// test
-// test
-// buttons
-const colorPallete = document.querySelectorAll('input[type="color"]');
 const gridPickerBtn = document.querySelectorAll(".grid-picker button");
+const colorPickerBtn = document.querySelectorAll("button[data-color]");
+const colorPickerWheel = document.querySelector("input[type='color'");
+const staticColor = document.querySelector(".color-picker .static");
+const addButton = document.querySelector(".add-color");
 
-// INIT
 let gridSize = 16;
 let drawingBoardOffset = drawingBoard.offsetWidth;
+let penColor = "#000000";
+let colorWheelColor = "";
 
-// EVENT LISTENERS
+setCanvas();
+
 gridPickerBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
-    gridSize = Number(getGridSize(btn));
-    setCanvas(btn);
+    gridSize = btn.dataset.grid;
+
+    setCanvas();
   });
 });
 
-let chosenColor = "#000000";
-savedColorBtn.forEach((btn) => {
-  btn.style = `background-color: ${btn.dataset.color}`;
-  btn.addEventListener("click", () => {
-    chosenColor = setColor(btn);
-
-    console.log("chosen Color", chosenColor);
-  });
+colorPickerBtn.forEach((btn) => {
+  btn.style.backgroundColor = `${btn.dataset.color}`;
+  btn.addEventListener("click", () => setPenColor(btn));
 });
 
-// FUNCTIONS
+colorPickerWheel.addEventListener("change", () => {
+  setPenColorWheel(colorPickerWheel);
+});
 
-const getGridSize = (button) => button.dataset.grid;
-const setColor = (controller) => controller.dataset.color;
-const clearCanvas = (canvas) => (canvas.innerHTML = "");
+addButton.addEventListener("click", () => {
+  if (staticColor.children.length < 12) {
+    const button = document.createElement("button");
+    button.classList.add("saved-color");
+    button.setAttribute("data-color", `${colorWheelColor}`);
+    button.style.backgroundColor = `${button.dataset.color}`;
+    staticColor.appendChild(button);
 
+    button.addEventListener("click", () => setPenColor(button));
+  } else {
+    alert("cannot add more Color to the pallete (limit: 10)");
+  }
+});
+
+// SET UP
 function setCanvas() {
-  clearCanvas(drawingBoard);
-  drawingBoard.style = `
-      grid-template-columns: repeat(${gridSize}, 1fr);
-      grid-template-rows: repeat(${gridSize}, 1fr);
-      `;
-  renderGridCanvas(drawingBoard, gridSize);
-}
+  drawingBoard.innerHTML = "";
 
-function renderGridCanvas(container, count) {
-  for (let i = 0; i < count ** 2; i++) {
+  drawingBoard.style = `
+    grid-template-columns: repeat(${gridSize}, 1fr);
+    grid-template-rows: repeat(${gridSize}, 1fr);
+    `;
+
+  for (let i = 0; i < gridSize ** 2; i++) {
     const div = document.createElement("div");
-    container.appendChild(div);
     div.classList.add("disabled-select");
     div.style = `
       height: ${drawingBoardOffset / gridSize}px;
-      border: 1px solid #ccc
       `;
+    drawingBoard.appendChild(div);
     draw(div);
   }
 }
 
+function setPenColor(controller) {
+  penColor = controller.dataset.color;
+}
+function setPenColorWheel(controller) {
+  penColor = controller.value;
+  colorWheelColor = controller.value;
+}
+
+// FUNCTIONALITIES
+
 let drawMode = false;
-function draw(target) {
-  window.addEventListener("mousedown", () => (drawMode = true));
-  window.addEventListener("mouseup", () => (drawMode = false));
-  target.addEventListener("click", () =>
-    target.setAttribute("style", `background-color: ${chosenColor}`)
-  );
-  target.addEventListener("mouseover", () => {
+window.addEventListener("mousedown", () => (drawMode = true));
+window.addEventListener("mouseup", () => (drawMode = false));
+
+function draw(div) {
+  div.addEventListener("mouseover", () => {
     if (drawMode === true) {
-      target.setAttribute("style", `background-color: ${chosenColor}`);
+      div.style.backgroundColor = penColor;
     }
+  });
+  div.addEventListener("click", () => {
+    div.style.backgroundColor = penColor;
   });
 }
