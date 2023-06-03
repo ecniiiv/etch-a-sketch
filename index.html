@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-A-Sketch</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="side-panel">
+        <div class="grid-picker">
+          <button data-grid="8">8x8</button>
+          <button data-grid="16">16x16</button>
+          <button data-grid="32">32x32</button>
+          <button data-grid="64">64x64</button>
+        </div>
+        <div class="color-picker">
+          <div class="wheel">
+            <input type="color" />
+            <h1 class="name"></h1>
+          </div>
+          <div>
+            <button class="saved-color">color</button>
+            <button class="saved-color">color</button>
+            <button class="saved-color">color</button>
+          </div>
+        </div>
+      </section>
+      <section class="board">
+        <div class="drawing-board"></div>
+      </section>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

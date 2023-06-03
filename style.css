@@ -1,0 +1,69 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+button {
+  border: 1px solid #ccc;
+  background: #eee;
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.side-panel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+}
+
+.color-picker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.color-picker .wheel {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.grid-picker button,
+.color-picker button {
+  width: 4em;
+  height: 4em;
+}
+
+.color-picker .wheel .color {
+  width: 4em;
+  height: 2em;
+}
+
+/* BOARD */
+.board {
+  border: 1px solid #ccc;
+  height: 500px;
+  width: 500px;
+}
+
+.drawing-board {
+  display: grid;
+}
