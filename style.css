@@ -67,3 +67,11 @@ button {
 .drawing-board {
   display: grid;
 }
+
+/*utils */
+
+.disabled-select {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
