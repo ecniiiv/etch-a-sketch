@@ -26,13 +26,19 @@ button {
   border-radius: 50%;
 }
 
+.grid-picker {
+  display: flex;
+  justify-content: space-around;
+}
+
 .grid-picker button,
 .color-picker .add-color,
 .color-picker .remove-color {
   border-radius: 8px;
   font-weight: 700;
   letter-spacing: 0.1rem;
-  color: #333;
+  background: transparent;
+  color: white;
 }
 
 .color-picker .add-color {
@@ -42,6 +48,9 @@ button {
 
 .color-picker .remove-color {
   height: 2em;
+}
+.color-picker .remove-color img {
+  width: 1.2em;
 }
 
 .wrapper {
