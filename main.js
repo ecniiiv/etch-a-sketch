@@ -33,7 +33,7 @@ colorPickerBtn.forEach((btn) => {
   btn.style.backgroundColor = `${btn.dataset.color}`;
   btn.addEventListener("click", () => {
     if (removeColorMode) {
-      staticColors.removeChild(btn);
+      removeFromPallete(staticColors, btn);
     } else {
       setPenColor(btn);
       setActiveColor(activeColorBox);
@@ -91,6 +91,7 @@ function setPenColorWheel(controller) {
 function setActiveColor(target) {
   target.style.backgroundColor = `${penColor}`;
 }
+
 function addToPallete() {
   if (staticColors.children.length < 12) {
     // creating a div element
@@ -105,8 +106,7 @@ function addToPallete() {
 
     button.addEventListener("click", () => {
       if (removeColorMode) {
-        staticColors.removeChild(button);
-        console.log(removeColorMode);
+        removeFromPallete(staticColors, button);
       } else {
         setPenColor(button);
         setActiveColor(activeColorBox);
@@ -115,6 +115,10 @@ function addToPallete() {
   } else {
     alert("cannot add more Color to the pallete (limit: 10)");
   }
+}
+
+function removeFromPallete(origin, target) {
+  origin.removeChild(target);
 }
 
 window.addEventListener("mousedown", () => (drawMode = true));
