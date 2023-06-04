@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-A-Sketch</title>
+    <script
+      src="https://kit.fontawesome.com/dc7c1ee380.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .disable-select {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+    </style>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-stone-800">
+    <div class="wrapper flex flex-col w-1024 mx-auto h-screen">
+      <header class="border-1px border-b-0 h-20"></header>
+      <main class="flex">
+        <!-- side panel -->
+        <section
+          id="side-panel"
+          class="flex flex-col gap-3 border-1px h-600 w-80"
+        >
+          <!-- Color Status -->
+          <section id="color-status" class="px-4">
+            <div id="active">
+              <span class="text-xl text-stone-300">Active</span>
+              <div
+                id="square"
+                data-active
+                class="w-full border-1px h-9 bg-black"
+              ></div>
+            </div>
+            <div id="prev-active">
+              <span class="text-xl text-stone-300">Previous</span>
+              <div id="square" class="w-full border-1px h-9 bg-teal-400"></div>
+            </div>
+          </section>
+          <!-- Color Picker -->
+          <section id="color-picker" class="flex px-4 gap-2">
+            <div id="selector">
+              <input
+                type="color"
+                class="h-12 w-12 border-none bg-transparent rounded-full"
+              />
+            </div>
+            <button
+              id="save-p-btn"
+              class="border px-3 bg-green-300 rounded-md w-full flex justify-center items-center"
+            >
+              <img src="../assets/add.svg" alt="" />
+            </button>
+            <button
+              id="remove-p-btn"
+              class="border px-3 bg-red-300 rounded-md w-full flex justify-center items-center"
+            >
+              <img src="../assets/trash.svg" alt="" />
+            </button>
+          </section>
+          <!-- Color Pallete -->
+          <section id="color-pallete" class="px-2">
+            <div id="pallete-box" class="grid grid-cols-4 gap-1">
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+              <div class="rounded-full w-14 h-14 bg-gray-500" data-color></div>
+            </div>
+          </section>
+          <!-- Options -->
+          <section id="options" class="flex flex-col px-2 gap-2">
+            <button
+              id="rainbow"
+              class="border px-3 rounded-md w-full flex justify-center items-center text-slate-50"
+            >
+              Rainbow
+            </button>
+            <button
+              id="eraser"
+              class="border px-3 rounded-md w-full flex justify-center items-center text-slate-50"
+            >
+              Eraser
+            </button>
+            <div>
+              <button
+                id="clear"
+                class="border px-3 rounded-md w-full flex justify-center items-center text-slate-50"
+                data-id
+              >
+                Clear
+              </button>
+            </div>
+          </section>
+          <section id="grid-options" class="grid grid-cols-2 gap-2 px-2">
+            <button
+              id="xs"
+              data-grid="8"
+              class="border px-3 rounded-md h-12 flex justify-center items-center text-slate-50"
+            >
+              8 x 8
+            </button>
+            <button
+              id="sm"
+              data-grid="16"
+              class="border px-3 rounded-md h-12 flex justify-center items-center text-slate-50"
+            >
+              16 x 16
+            </button>
+            <button
+              id="md"
+              data-grid="32"
+              class="border px-3 rounded-md h-12 flex justify-center items-center text-slate-50"
+            >
+              32 x 32
+            </button>
+            <button
+              id="l"
+              data-grid="64"
+              class="border px-3 rounded-md h-12 flex justify-center items-center text-slate-50"
+            >
+              64 x 64
+            </button>
+          </section>
+          <div class="px-4">
+            <button
+              id="set-grid"
+              class="border px-3 rounded-md h-11 w-full flex justify-center items-center text-slate-50 mb-4"
+            >
+              Set Grid
+            </button>
+          </div>
+        </section>
+        <!-- Canvas -->
+        <section
+          id="board"
+          class="border-1px border-left-0; w-full flex justify-center items-center h-600"
+        >
+          <div
+            id="canvas"
+            class="grid border border-slate-950 h-550 w-550 bg-white"
+          ></div>
+        </section>
+      </main>
+    </div>
+    <script src="./objectConstructor.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
